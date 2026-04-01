@@ -1,6 +1,7 @@
 
 
 
+
 alias refresh="source ~/.bashrc"
 alias clc="clear"
 alias rr="source ~/.bashrc"
