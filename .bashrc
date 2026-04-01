@@ -1,7 +1,3 @@
-
-
-
-
 alias refresh="source ~/.bashrc"
 alias clc="clear"
 alias rr="source ~/.bashrc"
@@ -9,11 +5,7 @@ alias ll="ls -la"
 alias op="chmod -R 755 ."
 alias pulse="cd /mnt/m/cm/internal/PULSE"
 alias PULSE="cd /mnt/m/cm/internal/PULSE"
-alias cj="cd /mnt/s/TD/TDAA/waldc"
-alias task="cd ~/Tasks/2026"
 alias terminal="dbus-launch gnome-session"
-alias mmount="sudo mount -t drvfs '\\clb-netapp01.ad.astrion.us\msdev' /mnt/m"
-alias smount="sudo mount -t drvfs '\\clb-netapp01.ad.astrion.us\seg' /mnt/s"
 
 export EDITOR=vim #"/usr/bin/vim"
 export NEDITOR=nvim #"/usr/bin/vim"
