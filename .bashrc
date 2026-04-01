@@ -12,7 +12,7 @@ export NEDITOR=nvim #"/usr/bin/vim"
 export FZF="/usr/bin/fzf"
 export BAT="/usr/bin/bat"
 
-source <($FZF --bash)
+#source <($FZF --bash)
 
 alias vimf='fzf --preview "if [[ -f {} ]]; then mime=\$(file --mime-type -b -- {}); if [[ \$mime == image/* ]]; then chafa --animate=false --size=\"\${FZF_PREVIEW_COLUMNS}x\$(( \${FZF_PREVIEW_LINES} - 3 ))\" -- {} 2>/dev/null || echo \"[Image preview failed: {}]\"; else \$BAT --color=always --theme=gruvbox-dark -n {}; fi; else echo {}; fi" \
                --preview-window=right:60% \
