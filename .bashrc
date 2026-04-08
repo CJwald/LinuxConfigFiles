@@ -6,11 +6,59 @@ alias op="chmod -R 755 ."
 alias pulse="cd /mnt/m/cm/internal/PULSE"
 alias PULSE="cd /mnt/m/cm/internal/PULSE"
 alias terminal="dbus-launch gnome-session"
+alias bat="bat --color=always --theme=gruvbox-dark --language=cpp"
 
 export EDITOR=vim #"/usr/bin/vim"
 export NEDITOR=nvim #"/usr/bin/vim"
 export FZF="/usr/bin/fzf"
 export BAT="/usr/bin/bat"
+
+
+
+# gc = grep context with bat syntax highlighting
+gc() {
+    if [ -z "$1" ]; then
+        echo "Usage:"
+        echo "  gc <pattern>                  # recursive search in current dir"
+        echo "  gc <pattern> <file_or_dir>    # search only in that file or dir (non-recursive if it's a file)"
+        echo "  gc <pattern> <file1> <file2> ...   # multiple files"
+        return 1
+    fi
+
+    local pattern="$1"
+    shift  # remove the pattern, so $@ now contains the remaining arguments (files/dirs)
+
+    if [ $# -eq 0 ]; then
+        # No file/dir given → do recursive search in current directory
+        grep -R -C3 --color=never \
+			--group-separator=$'\n\n────────────────────────────────────────────────────────────────────────────────\n' \
+			"$pattern" . \
+            | bat --style=full --paging=never --language=cpp -n 
+    else
+	# Check if ANY of the arguments is a directory
+        local has_dir=false
+        for arg in "$@"; do
+            if [ -d "$arg" ]; then
+                has_dir=true
+                break
+            fi
+        done
+		if [ "$has_dir" = true ]; then
+        	# File(s) or directory given → let grep decide (file = non-recursive, dir = recursive)
+        	grep -R -C3 --color=never \
+				--group-separator=$'\n\n────────────────────────────────────────────────────────────────────────────────\n' \
+				"$pattern" "$@" \
+        	    | bat --style=full --paging=never --language=cpp -n 
+        else
+			# File(s) or directory given → let grep decide (file = non-recursive, dir = recursive)
+        	grep -C3 --color=never \
+				--group-separator=$'\n\n────────────────────────────────────────────────────────────────────────────────\n' \
+				"$pattern" "$@" \
+        	    | bat --style=full --paging=never --language=cpp -n 
+		fi
+    fi
+}
+
 
 #source <($FZF --bash)
 
