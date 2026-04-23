@@ -5,13 +5,15 @@ alias ll="ls -la"
 alias op="chmod -R 755 ."
 alias pulse="cd /mnt/m/cm/internal/PULSE"
 alias PULSE="cd /mnt/m/cm/internal/PULSE"
-alias terminal="dbus-launch gnome-session"
 alias bat="bat --color=always --theme=gruvbox-dark --language=cpp"
+alias gitl="git log --oneline --graph --decorate"
 
 export EDITOR=vim #"/usr/bin/vim"
 export NEDITOR=nvim #"/usr/bin/vim"
 export FZF="/usr/bin/fzf"
 export BAT="/usr/bin/bat"
+
+eval "$(dircolors -b ~/.dircolors)"
 
 
 
@@ -74,3 +76,4 @@ alias vf='fzf --preview "if [[ -f {} ]]; then mime=\$(file --mime-type -b -- {})
 export PATH="$HOME/.local/bin/nvim-linux-x86_64/bin:$PATH"
 export PATH="/home/waldc/.local/bin:$PATH"
 
+PS1='\[\033[01;31m\]\u\[\033[00m\] : \[\033[01;30m\]\W\[\033[31m\] ✗  \[\033[00m\]'
